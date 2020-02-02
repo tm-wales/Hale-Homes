@@ -1,0 +1,7 @@
+.theme {
+    &--standard {
+        // Color update here
+        background-color: $color-background;
+        @import 'base';
+    }
+}

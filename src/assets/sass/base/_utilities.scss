@@ -1,0 +1,90 @@
+.u-container {
+    max-width: 177rem;
+    margin: 0 auto;
+    &--mid {
+        max-width: 140rem;
+        margin: 0 auto;
+    }
+    &--small {
+        max-width: 98rem;
+        margin: 0 auto;
+    }
+}
+
+.u-flex-container {
+    display: flex;
+    justify-content: flex-start;
+    &--right {
+        justify-content: flex-end;
+    }
+}
+
+.u-relative {
+    position: relative;
+}
+
+.u-max {
+    width: 100%;
+    height: 100%;
+}
+
+.u-grid {
+    display: block;
+    @supports (display: grid) {
+        display: grid;
+    }
+}
+
+.u-abs {
+    @include abs-center;
+}
+
+.u-line-highlight {
+    position: relative;
+    &:after {
+        content: '';
+        position: absolute;
+        width: 3rem;
+        height: 2px;
+        bottom: -0.5rem;
+        left: calc(50% - 1.5rem);
+        transform: rotate(-2deg);
+    }
+    &-left {
+        position: relative;
+        &:after {
+            content: '';
+            position: absolute;
+            width: 3rem;
+            height: 2px;
+            bottom: -0.5rem;
+            left: 2px;
+        }
+    }
+}
+
+.u-temp {
+    height: 100vh;
+}
+
+.u-line-left {
+    position: relative;
+    margin-left: 4rem;
+    transition: 0.5s padding;
+    &::before {
+        content: '';
+        top: 50%;
+        left: -3rem;
+        position: absolute;
+        height: 1px;
+        width: 2rem;
+        background-color: white;
+        transition: 0.5s width;
+    }
+    &:hover {
+        padding-left: 2rem;
+        &::before {
+            width: 4rem;
+        }
+    }
+}

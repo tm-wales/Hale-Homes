@@ -1,0 +1,240 @@
+.header {
+    width: 100%;
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+    background-color: $color-background-dark;
+    &__article {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        top: 0;
+        left: 0;
+        background-color: transparent;
+        padding: 8rem 3rem;
+        padding-bottom: 15rem;
+        height: 100%;
+        width: 100%;
+        @include respond('ipadPro') {
+            padding: 8rem 15rem 15rem 15rem;
+        }
+        &__relative {
+            height: 100%;
+            width: 100%;
+            z-index: -1;
+            &__only {
+                position: absolute;
+                top: 7rem;
+                left: 50%;
+                transform: translateX(-50%);
+                font-size: 3rem;
+                text-transform: uppercase;
+                font-weight: bold;
+                color: white;
+                background-color: rgba(green, 0.8);
+                padding: 1rem 2rem;
+                border-radius: 0.5rem;
+                width: 100%;
+                text-align: center;
+                @include respond('ipadPro') {
+                    top: 20rem;
+                    font-size: 3rem;
+                }
+            }
+        }
+
+        &__background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background-size: cover;
+            background-position: center;
+            z-index: 0;
+        }
+        &__logo,
+        &__title,
+        &__subtitle {
+            z-index: 2;
+            position: relative;
+        }
+        &__logo {
+            height: 20rem;
+            width: auto;
+            margin-bottom: 1rem;
+            @include respond('ipadPro') {
+                height: 30rem;
+            }
+        }
+        &__title {
+            font-size: 5rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            max-width: 30rem;
+            line-height: 5.5rem;
+            color: $color-text-light;
+            @include respond('ipad') {
+                font-size: 7rem;
+                line-height: 7.5rem;
+                max-width: 40rem;
+            }
+            @include respond('ipadPro') {
+                font-size: 9rem;
+                line-height: 9.5rem;
+                max-width: 60rem;
+            }
+        }
+        &__subtitle {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: block;
+            &__link,
+            &__text {
+                text-decoration: none;
+                color: $color-text-light;
+                padding: 2rem 1rem;
+            }
+        }
+        &.article--left {
+            justify-content: flex-start;
+            & .header__article {
+                &__title {
+                    margin-bottom: 3rem;
+                }
+                &__subtitle {
+                    font-size: 1.5rem;
+                    transition: 0.5s padding;
+                    & span {
+                        &::before {
+                            content: '';
+                            vertical-align: middle;
+                            display: inline-block;
+                            height: 1px;
+                            width: 2rem;
+                            background-color: white;
+                            transition: 0.5s width;
+                            margin-right: 2rem;
+                        }
+                    }
+                    &:hover {
+                        & span {
+                            &::before {
+                                width: 4rem;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        &.article--middle {
+            justify-content: center;
+            text-align: center;
+            & .header__article {
+                &__title {
+                    margin: 0 auto;
+                    margin-bottom: 1rem;
+                }
+                &__subtitle {
+                    font-size: 1.5rem;
+                    transition: 0.5s padding;
+                    &__link,
+                    &__text {
+                        padding: 0 1rem;
+                    }
+                    & span {
+                        &::before,
+                        &::after {
+                            content: '';
+                            vertical-align: middle;
+                            display: inline-block;
+                            height: 1px;
+                            width: 2rem;
+                            background-color: white;
+                            transition: 0.5s width;
+                            margin: 0 2rem;
+                        }
+                    }
+                    &:hover {
+                        & span {
+                            &::before,
+                            &::after {
+                                width: 4rem;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &__switch {
+        border: 2px solid $color-text-light;
+        position: absolute;
+        bottom: 3rem;
+        left: 3rem;
+        display: none;
+        z-index: 3;
+        @include respond('ipad') {
+            display: block;
+        }
+        @include respond('ipadPro') {
+            bottom: 15rem;
+            left: 15rem;
+        }
+        &__button {
+            position: relative;
+            float: left;
+            margin: 0;
+            width: 6rem;
+            height: 5rem;
+            text-align: center;
+            vertical-align: middle;
+            font-size: 0rem;
+            color: $color-text-light;
+            padding: 1.2rem;
+            cursor: pointer;
+            & svg {
+                height: 100%; // mix-blend-mode: difference;
+            }
+            &::after {
+                content: '';
+                position: absolute;
+                background-color: $color-primary;
+                left: 0;
+                top: 0;
+                height: 100%;
+                width: 0;
+                transition: width 0.5s, color 0.5s;
+                z-index: -1;
+            }
+            &:not(:last-child) {
+                &::after {
+                    left: auto;
+                    right: 0;
+                    border-right: 2px solid $color-text-light;
+                }
+            }
+            &:hover {
+                color: white;
+                &:after {
+                    width: 100%;
+                }
+            }
+        }
+    }
+    &__cta {
+        border: 2px solid $color-text-light;
+        position: absolute;
+        bottom: 3rem;
+        right: 50%;
+        transform: translateX(50%);
+        z-index: 3;
+        width: 40rem;
+        max-width: calc(100% - 6rem);
+        @include respond('ipadPro') {
+            bottom: 15rem;
+            right: 15rem;
+            transform: translateX(0);
+        }
+    }
+}

@@ -1,0 +1,114 @@
+.section {
+    position: relative;
+    padding: 3rem 0;
+    @include respond('ipad') {
+        padding: 5rem;
+    }
+    @include respond('ipadPro') {
+        padding: 15rem;
+    }
+    @include respond('common') {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+    &__H {
+        position: absolute;
+        top: 0;
+        left: 5rem;
+        height: 15rem;
+        width: auto;
+    }
+    &__image {
+        width: 100%;
+        height: 40rem;
+        background-size: cover;
+        background-position: center;
+        @include respond('ipad') {
+            height: 40vh;
+            width: 80%;
+            margin: 0 auto;
+        }
+        @include respond('common') {
+            width: 50%;
+        }
+    }
+    &__vimeo {
+        position: relative;
+        padding-bottom: 56.25%;
+        height: 0;
+        overflow: hidden;
+        max-width: 100%;
+        height: auto;
+        @include respond('common') {
+            width: 50%;
+        }
+        & iframe,
+        & object,
+        & embed {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    }
+    &__brochure {
+        color: $color-primary;
+        margin-top: 2rem;
+        display: block;
+        & svg {
+            height: 3rem;
+            margin-right: 2rem;
+        }
+    }
+    &__details {
+        position: relative;
+        margin: 0 auto;
+        margin-top: -1rem;
+        z-index: 1;
+        background-color: white;
+        max-width: 90%;
+        padding: 4rem 3rem;
+        @include respond('ipad') {
+            padding: 2rem 0;
+            background-color: transparent !important;
+            margin-top: 0;
+            max-width: 100%;
+        }
+        @include respond('common') {
+            width: 50%;
+            padding-left: 10rem;
+        }
+    }
+    &__subtitle {
+        line-height: 2rem;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+    &__title {
+        font-size: 3rem;
+        line-height: 4rem;
+        font-weight: 900;
+        margin-top: 1rem;
+        @include respond('ipad') {
+            font-size: 4rem;
+            line-height: 4rem;
+        }
+        @include respond('common') {
+            font-size: 5rem;
+            line-height: 6rem;
+        }
+    }
+    &__text,
+    &__summary {
+        margin-top: 2rem;
+        @include respond('ipad') {
+            line-height: 3rem;
+        }
+        @include respond('common') {
+            font-size: 2rem;
+            margin-left: 0rem;
+        }
+    }
+}

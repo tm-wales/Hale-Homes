@@ -1,0 +1,255 @@
+.housetypes {
+    &__header {
+        position: relative;
+    }
+    &__body {
+        position: relative;
+    }
+    &__top {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        background-size: cover;
+        background-position: center center;
+        padding: 2rem;
+        text-align: center;
+        &__title {
+            width: 60%;
+            text-align: left;
+            @include respond('ipad') {
+                width: 50%;
+                text-align: center;
+            }
+            &__icon {
+            }
+            &__text {
+                font-size: 2rem;
+                @include respond('common') {
+                    font-size: 3rem;
+                }
+            }
+            &__dimensions {
+                &__bedrooms {
+                }
+                &__areas {
+                }
+                @include respond('common') {
+                    font-size: 2rem;
+                }
+            }
+        }
+        &__development {
+            width: 40%;
+            @include respond('ipad') {
+                width: 50%;
+            }
+            &__logo {
+                width: 10rem;
+                height: auto;
+            }
+        }
+    }
+    &__header {
+        &__background {
+            position: relative;
+            height: 100vh;
+            width: 100%;
+            background-size: cover;
+            background-position: center;
+        }
+    }
+    &__section {
+        &__title {
+            margin-top: 10rem;
+            margin-bottom: 2rem;
+            font-size: 2.5rem;
+            font-weight: 500;
+            text-decoration: underline;
+            @include respond('common') {
+                display: block;
+                width: 100%;
+                text-align: center !important;
+            }
+        }
+    }
+    &__details {
+        padding: 3rem;
+        @include respond('common') {
+            margin-left: 50%;
+        }
+        &__description {
+            &__text {
+                margin-top: 1rem;
+            }
+        }
+        &__floorplan {
+            @include respond('ipadPro') {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+            &__floor {
+                background-color: white;
+                border-radius: 2rem;
+                margin: 5rem 0;
+                text-align: center;
+                @include respond('ipadPro') {
+                    width: 40%;
+                    margin: 5rem 5%;
+                }
+                @include respond('common') {
+                    width: 40%;
+                    background-color: transparent;
+                    margin: 0 5%;
+                }
+                &__image {
+                    @include respond('ipadPro') {
+                        width: 40%;
+                        margin: 0 auto;
+                        height: auto;
+                    }
+                    @include respond('common') {
+                        width: 100%;
+                    }
+                }
+                &__id {
+                    font-size: 10rem; // line-height: 10rem;
+                }
+                &__details {
+                    padding: 2rem;
+                }
+                &__name {
+                    font-weight: bold;
+                    font-size: 2rem;
+                }
+                &__rooms {
+                }
+                &__room {
+                    margin: 1rem 0;
+                    &__name {
+                        // text-align: left;
+                        font-weight: bold;
+                    }
+                    &__dimensions {
+                        // text-align: left;
+                    }
+                }
+            }
+        }
+        &__plots {
+            width: 100%;
+            text-align: center;
+            border: 2px solid rgba(black, 0.5);
+            & tr,
+            & th,
+            & td {
+                border: 2px solid rgba(black, 0.5);
+                width: 33%;
+            }
+            &__item {
+                &__status {
+                    &__icon {
+                        height: 1.6rem;
+                        width: 1.6rem;
+                        border-radius: 50%;
+                        &.available {
+                            color: green;
+                        }
+                        &.reserved {
+                            color: yellow;
+                        }
+                        &.exchanged,
+                        &.completed {
+                            color: red;
+                        }
+                    }
+                }
+            }
+        }
+        &__specifications {
+            @include respond('ipad') {
+                display: flex;
+                flex-wrap: wrap;
+            }
+            &__item {
+                margin-top: 2rem;
+                @include respond('ipad') {
+                    width: 40%;
+                    margin: 3rem 5%;
+                }
+                &__name {
+                    font-weight: bold;
+                    font-size: 1.8rem;
+                }
+                &__details {
+                    &__item {
+                        position: relative;
+                        margin-left: 3rem;
+                        &::before {
+                            content: '-';
+                            position: absolute;
+                            top: 0;
+                            left: -2rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &__media {
+        transition: 1s all;
+        padding: 2rem;
+        @include respond('common') {
+            position: absolute;
+            top: 0;
+            height: 100vh;
+            width: 50%;
+            overflow-x: hidden;
+            overflow-y: scroll;
+        }
+        &.in {
+            @include respond('common') {
+                position: fixed;
+            }
+        }
+        &__item {
+            text-align: right;
+            width: 100%;
+            height: auto;
+            &__image {
+                width: 100%;
+                height: 50vh;
+                background-size: cover;
+                background-position: center;
+            }
+            &__vimeo {
+                position: relative;
+                padding-bottom: 56.25%;
+                height: 0;
+                overflow: hidden;
+                max-width: 100%;
+                height: auto;
+                & iframe,
+                & object,
+                & embed {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+            &__title {
+                display: inline-block;
+                padding: 0.5rem 1rem;
+                background-color: white;
+                border-radius: 5px;
+                font-size: 1.2rem;
+                transform: translateY(-1rem);
+            }
+        }
+    }
+}

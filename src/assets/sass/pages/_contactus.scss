@@ -1,0 +1,52 @@
+.contactus {
+    padding: 3rem;
+    display: flex;
+    background-size: cover;
+    background-position: center;
+    flex-direction: column;
+
+    @include respond('ipadPro') {
+        padding: 15rem;
+    }
+
+    @include respond('common') {
+        flex-direction: row;
+        &__form {
+            width: 70%;
+        }
+        &__details {
+            width: 30%;
+        }
+    }
+
+    &__form {
+        box-shadow: 0 2px 5px rgba(black, 0.2);
+        background-color: $color-primary;
+    }
+    &__details {
+        box-shadow: 0 2px 5px rgba(black, 0.2);
+        background: $color-background-light;
+        border: 2px solid $color-primary;
+        padding: 0 2rem;
+        color: $color-text-dark;
+        text-align: center;
+        &__item {
+            margin: 4rem;
+        }
+        &__icon {
+            display: block;
+            margin: 0 auto;
+            color: $color-primary-dark;
+            width: 4rem;
+            height: auto;
+            margin-bottom: 1rem;
+        }
+        & a {
+            color: $color-text-dark;
+            transition: 0.3s all;
+            &:hover {
+                color: $color-primary-dark;
+            }
+        }
+    }
+}

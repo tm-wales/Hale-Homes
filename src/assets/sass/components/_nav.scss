@@ -1,0 +1,476 @@
+$navBackground: $color-primary;
+$navSelected: $color-text-light;
+$nav: $color-primary-light;
+.navigation {
+    &__logo {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 6rem;
+        width: 100%;
+        z-index: 99;
+        @include respond('phoneXL') {
+            height: 7rem;
+        }
+        @include respond('440') {
+            width: 25rem;
+        }
+        @include respond('ipadPro') {
+            top: 3rem;
+            left: 3rem;
+        }
+        &.open {
+            .navigation {
+                &__logo {
+                    &__image {
+                        transform: scaleX(1);
+                        transition-delay: 0s;
+                    }
+                }
+            }
+        }
+        &__block {
+            position: relative;
+            height: 100%;
+            width: 8rem;
+            background-color: transparent;
+            z-index: 100;
+            transition: 0.5s background-color;
+            border: 2px solid white;
+            &:hover {
+                background-color: $navBackground;
+                & .navigation__social__icon {
+                    transform: scale(1.1);
+                }
+            }
+        }
+        &__image {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 6rem;
+            width: 100%;
+            background-color: white;
+            z-index: 1;
+            text-align: center;
+            vertical-align: middle;
+            @include respond('phoneXL') {
+                height: 7rem;
+            }
+            @include respond('440') {
+                width: 25rem;
+            }
+            @include respond('ipadPro') {
+                top: 3rem;
+                left: 3rem;
+                transform: scaleX(0);
+                transform-origin: 0%;
+                transition: transform 0.3s;
+                transition-delay: 0.6s;
+            }
+            &__container {
+                position: relative;
+                margin: 0 10rem;
+                height: 100%;
+                @include respond('440') {
+                    margin: 0 2rem 0 10rem;
+                }
+                & img {
+                    position: absolute;
+                    top: 50%;
+                    left: 0;
+                    transform: translateY(-50%);
+                    width: 20rem;
+                    height: auto;
+                    transition: 0.5s transform;
+                    @include respond('440') {
+                        width: 12rem;
+                    }
+                }
+            }
+            &:hover {
+                & img {
+                    transform: translateY(-55%);
+                }
+            }
+        }
+    }
+    &__toggle {
+        z-index: 1000;
+        position: fixed;
+        left: 0;
+        top: 0;
+        height: 6rem;
+        width: 8rem;
+        border: 2px solid white;
+        background-color: $navBackground;
+        @include respond('phoneXL') {
+            height: 7rem;
+        }
+        @include respond('ipadPro') {
+            left: 3rem;
+            top: 3rem;
+            height: 7rem;
+            width: 8rem;
+            background-color: transparent;
+            &.default {
+                background-color: rgba($navBackground, 0.6);
+            }
+        }
+        transition: background-color 0.3s;
+        cursor: pointer;
+        &:hover {
+            background-color: $navBackground;
+            & .navigation__toggle__bars {
+                transform: scale(1.1);
+            }
+        }
+        &__bars {
+            position: relative;
+            display: inline-block;
+            height: 100%;
+            width: 100%;
+            transition: 0.3s transform;
+            transition-delay: 0.2s;
+            &::before,
+            &::after {
+                content: '';
+                position: absolute;
+                transition: all 0.2s;
+                display: inline-block;
+                height: 2px;
+                width: 40%;
+                left: 30%;
+                background-color: white;
+            }
+            &::before {
+                top: 43%;
+                transform: translateY(-50%);
+            }
+            &::after {
+                bottom: 43%;
+                transform: translateY(50%);
+            }
+        }
+        &.open {
+            background-color: $navBackground;
+            & .navigation__toggle__bars {
+                transform: rotate(-180deg);
+                &::before {
+                    top: 50%;
+                    transform: translateY(-50%) rotate(45deg);
+                }
+                &::after {
+                    bottom: 50%;
+                    transform: translateY(50%) rotate(-45deg);
+                }
+            }
+        }
+        &.closed {
+            & .navigation__toggle__bars {
+                transition-delay: 0s !important;
+                &::after {
+                    transition-delay: 0.3s;
+                }
+                &::before {
+                    transition-delay: 0.3s;
+                }
+            }
+        }
+    }
+    &__nav {
+        position: fixed;
+        z-index: 999;
+        background-color: $nav;
+        border: 2px solid white;
+        & .nuxt-link-exact-active {
+            &::after {
+                display: block;
+                height: 0.2rem;
+                background-color: $color-text-light;
+                content: ' ';
+                width: 2rem;
+                margin: 0.2rem 0;
+                transition: all 0.3s;
+            }
+        }
+        &.full {
+            top: 0;
+            left: 0;
+            height: 100vh;
+            width: 100vw;
+            transform: translateX(-100vw);
+            transition: 0.5s transform;
+            transition-timing-function: ease-in-out;
+            transition-delay: 0.2s;
+            &.open {
+                transform: translateX(0);
+                transition-delay: 0s;
+                .navigation__menu {
+                    transition-delay: 0.2s;
+                    transform: translateX(0);
+                }
+            }
+            .navigation__menu {
+                height: calc(100vh - 10rem);
+                width: 100%;
+                padding-left: 5rem;
+                padding-top: 8rem;
+                transform: translateX(-100vw);
+                transition: 0.5s transform;
+                transition-delay: 0s;
+                transition-timing-function: ease-in-out;
+                &__link,
+                &__group,
+                &__link a {
+                    font-size: 4rem;
+                    font-weight: bold;
+                }
+                &__sub__link,
+                &__sub__link a {
+                    font-size: 2rem;
+                    padding: 1rem 0;
+                }
+            }
+            .navigation__menu__social {
+                width: 100vw;
+                height: 10rem;
+                display: flex;
+                flex-direction: row;
+                padding: 0 3rem;
+                justify-content: space-between;
+                align-items: center;
+                & li,
+                &__link,
+                & svg {
+                    width: 4rem;
+                    height: 4rem;
+                    display: block;
+                }
+            }
+        }
+        &.bar {
+            top: 3rem;
+            left: 28rem;
+            height: 7rem;
+            overflow: hidden;
+            width: calc(100vw - 11rem - 28rem);
+            transform: scaleX(0);
+            transform-origin: 0%;
+            transition: 0.5s transform;
+            transition-timing-function: ease-in-out;
+            transition-delay: 0;
+            &.open {
+                transform: scaleX(1);
+                transition-delay: 0.2s;
+                &.subopen {
+                    overflow-x: visible;
+                    overflow-y: visible;
+                }
+                .navigation__menu {
+                    transition-delay: 0.2s;
+                    transform: translateX(0);
+                }
+            }
+            .navigation__menu {
+                height: 100%;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                transform: translateX(-100vw);
+                transition: 0.5s transform;
+                transition-delay: 0s;
+                transition-timing-function: ease-in-out;
+                padding: 0 5rem;
+                .navigation__menu {
+                    transform: translateX(0);
+                }
+                &__link,
+                &__group,
+                &__link a,
+                &__sub__link,
+                &__sub__link a {
+                    font-size: 1.6rem;
+                    font-weight: bold;
+                    text-align: center;
+                }
+                &__sub {
+                    position: fixed;
+                    background-color: $navBackground;
+                    padding: 0 2rem;
+                    margin-left: -2rem;
+                    &__link {
+                        text-align: left;
+                        padding: 1rem 0rem;
+                    }
+                }
+            }
+            .navigation__menu__social {
+                display: none;
+            }
+        }
+    }
+    &__menu {
+        background-color: $navBackground;
+        overflow-y: scroll;
+        overflow-x: hidden;
+
+        @include respond('767') {
+            overflow-y: visible !important;
+            overflow-x: visible !important;
+        }
+
+        &:hover {
+            .navigation__menu__link,
+            .navigation__menu__group,
+            .navigation__menu__link a,
+            .navigation__menu__sub__link,
+            .navigation__menu__sub__link a {
+                color: $nav;
+            }
+        }
+        &__link,
+        &__group,
+        &__link a,
+        &__sub__link,
+        &__sub__link a {
+            font-size: 4rem;
+            font-weight: bold;
+            text-decoration: none;
+            color: $navSelected;
+            transition: 0.5s color;
+            cursor: pointer;
+            &:hover {
+                color: white !important;
+            }
+        }
+        &__sub {
+            overflow: hidden;
+            max-height: 0;
+            transition: max-height 0.5s;
+            &__link,
+            &__link a {
+                font-size: 2.5rem;
+            }
+        }
+        &__group.open {
+            color: $navSelected !important;
+            .navigation__menu {
+                &__sub__link,
+                &__sub__link a {
+                    color: $navSelected !important;
+                    &:hover {
+                        color: white !important;
+                    }
+                }
+            }
+        }
+    }
+    &__social {
+        position: fixed;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        top: 0;
+        right: 0;
+        height: 6rem;
+        width: 8rem;
+        background-color: $navBackground;
+        border: 2px solid white;
+        z-index: 99;
+        text-align: center;
+        color: white;
+        cursor: pointer;
+        transition: 0.5s background-color;
+        @include respond('phoneXL') {
+            height: 7rem;
+        }
+        @include respond('ipadPro') {
+            top: 3rem;
+            right: 3rem;
+            background-color: transparent;
+            &.default {
+                background-color: rgba($navBackground, 0.6);
+                & .navigation__social__links {
+                    background-color: rgba($navBackground, 0.6);
+                }
+            }
+        }
+        &.open {
+            background-color: $navBackground;
+            .navigation__social {
+                &__links {
+                    max-height: 28rem;
+                }
+            }
+        }
+        &:hover {
+            background-color: $navBackground;
+            & .navigation__social__icon {
+                transform: scale(1.1);
+            }
+        }
+        &__icon {
+            display: block;
+            color: white;
+            height: 40%;
+            width: 100%;
+            transition: 0.5s transform;
+            z-index: 100;
+        }
+        &__link {
+            display: block;
+            color: $navSelected;
+            transition: 0.5s color;
+            height: 6rem;
+            width: 8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            @include respond('phoneXL') {
+                height: 7rem;
+            }
+            &:hover,
+            &:active {
+                color: white;
+            }
+        }
+        &__links {
+            overflow: hidden;
+            position: fixed;
+            margin-top: 6rem;
+            top: 0;
+            right: 0;
+            @include respond('ipadPro') {
+                margin-top: 7rem;
+                top: 3rem;
+                right: 3rem;
+            }
+            height: 35rem;
+            width: 8rem;
+            max-height: 0;
+            transition: 0.5s max-height;
+        }
+        &__item {
+            height: 7rem;
+            border: 2px solid white;
+            border-top: 0;
+            transition: background-color 0.5s;
+            &:hover {
+                background-color: $navBackground;
+                & .navigation__social__icon {
+                    transform: scale(1.1);
+                }
+            }
+        }
+    }
+    &__message {
+        text-align: center;
+        line-height: 10rem;
+        color: white;
+        @include respond('ipadPro') {
+            display: none;
+        }
+    }
+}

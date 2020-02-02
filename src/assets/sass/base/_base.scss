@@ -1,0 +1,81 @@
+/*        Base        */
+
+/* ------------------ */
+
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html {
+    font-size: 50%; // defines what 1 rem is
+    @include respond('ipad') {
+        font-size: 62.5%; // defines what 1 rem is
+    }
+    @include respond('professional') {
+        font-size: 70%; // defines what 1 rem is
+    }
+    word-spacing: 1px;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    box-sizing: border-box;
+}
+
+ul {
+    list-style-type: none;
+}
+
+button {
+    font-family: inherit;
+}
+
+.link {
+    position: relative;
+    float: left;
+    margin: 0;
+    text-align: center;
+    vertical-align: middle;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-size: 1.3rem;
+    font-weight: bold;
+    width: 50%;
+    color: $color-text-light;
+    padding: 1.5rem 2rem;
+    cursor: pointer;
+    & svg,
+    & span {
+        // mix-blend-mode: difference;
+        height: 100%;
+    }
+    &::after {
+        content: '';
+        position: absolute;
+        background-color: $color-primary;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 0;
+        transition: width 0.5s, color 0.5s;
+        z-index: -1;
+    }
+    &.left {
+        border-right: 2px solid $color-text-light;
+        &::after {
+            left: auto;
+            right: 0;
+        }
+    }
+    &:hover {
+        &:after {
+            width: 100%;
+        }
+    }
+}
+
+/* ------------------ */

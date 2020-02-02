@@ -1,0 +1,336 @@
+.contact-form {
+    position: relative;
+    width: 90%;
+    margin: 0 auto;
+    max-width: 90rem;
+    padding: 2rem 3rem;
+    text-align: center;
+    transition: all 1s;
+    min-height: 2rem;
+    &__wrapper {
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0;
+        visibility: hidden;
+        height: 100%;
+        width: 100%;
+        background-color: $color-primary;
+        color: $color-text-light;
+        font-size: 2rem;
+        font-weight: bold;
+        padding-top: 25%;
+        line-height: 100%;
+        text-align: center;
+        vertical-align: middle;
+        transition: all 0.5s;
+        z-index: 9999;
+        &.show {
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+    &__section {
+        &__title {
+            font-weight: bold;
+            &.finished {
+                text-align: center;
+            }
+        }
+    }
+    &__section {
+        &__title {
+            text-align: left;
+            color: white;
+            font-size: 3rem;
+            & span {
+                display: block;
+                font-size: 1.6rem;
+                font-weight: 400;
+            }
+        }
+    }
+    &__group,
+    .vdatetime {
+        position: relative;
+        margin-bottom: 2rem;
+        color: $color-text-inverse;
+        @include respond('ipad') {
+            margin-bottom: 0;
+        }
+        &.textarea,
+        &.radio,
+        &.checkbox {
+            grid-column: 1 / span 2;
+        }
+        & .title {
+            font-weight: bold;
+            color: $color-text-light;
+            font-size: 1.8rem;
+        }
+        &--error {
+            border: 1px solid red;
+        }
+    }
+    .vdatetime {
+        margin-top: 2rem;
+        position: relative;
+        &:after {
+            position: absolute;
+            content: 'Select a date & time';
+            font-size: 1.6rem;
+            top: 50%;
+            left: 1rem;
+            transform: translateY(-50%);
+            pointer-events: none;
+        }
+        &.off {
+            &:after {
+                content: '';
+            }
+        }
+    }
+    .vdatetime-popup__header {
+        background-color: $color-primary;
+    }
+    .vdatetime-calendar__month__day--selected span span,
+    .vdatetime-calendar__month__day--selected:hover span span {
+        background-color: $color-primary;
+    }
+    .vdatetime-popup__actions__button,
+    .vdatetime-time-picker__item--selected {
+        color: $color-primary;
+    }
+    &__form {
+        margin-top: 2rem;
+        @include respond('ipad') {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-column-gap: 1rem;
+            grid-row-gap: 2rem;
+        }
+    }
+    &__input,
+    .vdatetime-input {
+        font-family: inherit;
+        color: inherit;
+        font-size: 1.5rem;
+        padding: 1rem 1.5rem;
+        padding-top: 2rem;
+        border-radius: 2px;
+        background-color: rgba($color-text, 0.9);
+        border: none;
+        border-bottom: 3px solid transparent;
+        width: 100%;
+        display: block;
+        transition: all 0.3s;
+        &:focus {
+            outline: none;
+            box-shadow: 0 1rem 2rem rgba($color-background, 0.3);
+            border-bottom: 3px solid $color-secondary;
+            &:invalid {
+                border-bottom: 3px solid red;
+            }
+        }
+        &::-webkit-input-placeholder {
+            color: $color-text-inverse;
+        }
+        &--error {
+            color: red;
+        }
+    }
+    &__input:placeholder-shown + &__label:not(&__label--textarea) {
+        opacity: 0;
+        visibility: hidden;
+        padding: 1rem 1.5rem;
+        padding-top: 2rem;
+    }
+    &__label {
+        position: absolute;
+        left: 0;
+        top: 0;
+        font-size: 1.2rem;
+        font-weight: 700;
+        display: block;
+        color: rgba($color-text-inverse, 0.6);
+        transition: all 0.3s;
+        z-index: 1000;
+        padding-left: 1.5rem;
+        padding-top: 0.1rem;
+        width: 100%;
+        text-align: left;
+    }
+    & .radio {
+        &__label {
+            display: block;
+            color: $color-text-light;
+        }
+        &__container {
+            display: block;
+            position: relative;
+            cursor: pointer;
+            margin-top: 1rem;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            position: relative;
+            display: inline-block;
+            width: 15rem;
+            /* Hide the browser's default radio button */
+            & input {
+                position: absolute;
+                opacity: 0;
+                cursor: pointer;
+                &:checked ~ .checkmark {
+                    background-color: white;
+                    &:after {
+                        display: block;
+                    }
+                }
+            }
+            & .checkmark {
+                position: absolute;
+                top: 50%;
+                left: 0;
+                transform: translate(0, -50%);
+                height: 20px;
+                width: 20px;
+                background-color: white;
+                border-radius: 50%;
+                transition: 0.3s all;
+                &:after {
+                    content: '';
+                    position: absolute;
+                    display: none;
+                    top: 6px;
+                    left: 6px;
+                    width: 8px;
+                    height: 8px;
+                    border-radius: 50%;
+                    background: $color-primary-dark;
+                    transition: 0.3s all;
+                }
+            }
+            /* On mouse-over, add a grey background color */
+            &:hover input ~ .checkmark {
+                background-color: #ccc;
+            }
+        }
+    }
+    & .checkbox {
+        text-align: left;
+        &.flex {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+        &.item {
+            font-size: 1.6rem;
+            color: $color-text-light;
+            padding: 0.5rem 3rem;
+        }
+        &__label {
+            display: block;
+            color: $color-text-light;
+        }
+        &__container {
+            display: block;
+            position: relative;
+            cursor: pointer;
+            margin-top: 1rem;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            position: relative;
+            display: inline-block;
+            width: 15rem;
+            /* Hide the browser's default radio button */
+            & input {
+                position: absolute;
+                opacity: 0;
+                cursor: pointer;
+                &:checked ~ .checkmark {
+                    &:after {
+                        display: block;
+                    }
+                }
+            }
+            & .checkmark {
+                position: absolute;
+                top: 50%;
+                left: -25px;
+                transform: translate(0, -50%);
+                height: 20px;
+                width: 20px;
+                background-color: white;
+                transition: 0.3s all;
+                &:after {
+                    content: '';
+                    position: absolute;
+                    display: none;
+                    left: 7px;
+                    top: 3px;
+                    width: 6px;
+                    height: 12px;
+                    border: solid $color-primary-dark;
+                    border-width: 0 3px 3px 0;
+                    transform: rotate(45deg);
+                    transition: 0.3s all;
+                }
+            }
+            /* On mouse-over, add a grey background color */
+            &:hover input ~ .checkmark {
+                background-color: #ccc;
+            }
+        }
+    }
+    .next {
+        margin-top: 2rem;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        & .back {
+            text-align: left;
+            align-self: start;
+        }
+        & .forward {
+            text-align: right;
+            align-self: end;
+        }
+        & .back,
+        & .forward {
+            &.hide {
+                opacity: 0;
+                visibility: hidden;
+            }
+            & span {
+                cursor: pointer;
+                padding: 1rem 3rem;
+                transition: 0.5s color;
+                &:hover {
+                    color: $color-primary;
+                }
+            }
+        }
+    }
+    &__enquire {
+        display: inline-block;
+        margin: 2rem auto;
+        margin-bottom: 0;
+        background-color: $color-text;
+        color: $color-primary;
+        padding: 1rem 3rem;
+        font-size: 1.3rem;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        font-weight: bold;
+        border-radius: 4px;
+        transition: background-color 0.3s;
+        cursor: pointer;
+        &:hover {
+            background-color: $color-primary-light;
+            color: $color-text-light;
+        }
+    }
+}

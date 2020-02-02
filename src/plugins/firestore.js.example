@@ -1,0 +1,15 @@
+import firebase from 'firebase/app'
+import 'firebase/firestore'
+if (!firebase.apps.length) {
+    const config = {
+        apiKey: '<enter keys here>',
+        authDomain: '<enter keys here>',
+        databaseURL: '<enter keys here>',
+        projectId: '<enter keys here>',
+        storageBucket: '<enter keys here>',
+        messagingSenderId: '<enter keys here>'
+    }
+    firebase.initializeApp(config)
+}
+const fireDb = firebase.firestore()
+export { fireDb }

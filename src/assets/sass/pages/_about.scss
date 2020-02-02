@@ -1,0 +1,51 @@
+.page--about {
+    .about {
+        position: relative;
+        padding: 3rem;
+        @include respond('ipadPro') {
+            padding: 5rem 15rem;
+        }
+        &__h {
+            position: absolute;
+            top: 0;
+            right: 0;
+            z-index: 0;
+            height: 100vh;
+            width: 100vw;
+            & img {
+                width: 60%;
+                margin-left: 30%;
+                margin-top: 20%;
+                height: auto;
+                opacity: 0.2;
+            }
+        }
+        &__block {
+            position: relative;
+            z-index: 2;
+            margin: 5rem 0;
+            @include respond('common') {
+                max-width: 90rem;
+                margin: 10rem auto;
+            }
+
+            &__title {
+                font-weight: bold;
+                font-size: 3rem;
+            }
+            &__text {
+
+                & p {
+                    margin: 2rem 0;
+                }
+                & a {
+                    color: $color-primary;
+                    transition: color .3s;
+                    &:hover {
+                        color: $color-primary-light;
+                    }
+                }
+            }
+        }
+    }
+}

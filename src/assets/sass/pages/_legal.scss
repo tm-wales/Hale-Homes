@@ -1,0 +1,79 @@
+.page--legal {
+    .legal {
+        &__links {
+            height: 7rem;
+            display: flex;
+            align-content: center;
+            justify-content: center;
+            flex-direction: row;
+            flex-wrap: wrap;
+            margin-top: 5rem;
+        }
+        &__link {
+            &__a {
+                padding: 1rem 4rem;
+                border: 2px solid $color-text-dark;
+                color: $color-text-dark;
+                text-decoration: none;
+                transition: color 0.3s;
+                font-size: 1.2rem;
+                font-weight: bold;
+                text-transform: uppercase;
+                &:hover {
+                    color: $color-primary-light;
+                }
+                margin: 5rem 1rem;
+            }
+        }
+        &__block {
+            max-width: 90rem;
+            margin: 0 auto;
+            &__title {
+                margin-top: 10rem;
+                text-align: center;
+            }
+            &__html {
+                padding: 2rem;
+                font-size: 1.6rem;
+                & h1 {
+                    margin-top: 2.5rem;
+                    margin-left: 0;
+                    font-size: 1.8rem;
+                    color: $color-primary !important;
+                    font-weight: bold;
+                    letter-spacing: 0.5rem;
+                    text-shadow: none;
+                }
+                & h2 {
+                    margin-top: 3rem;
+                    margin-left: 0;
+                    font-size: 1.8rem;
+                    color: $color-primary !important;
+                    font-weight: bold;
+                    text-shadow: none;
+                }
+                & ul {
+                    margin: 1rem 0;
+                }
+                & p {
+                    margin: 1rem 0;
+                }
+                & li {
+                    list-style-type: circle;
+                    margin-left: 4rem;
+                }
+                & img {
+                    width: 100%;
+                    height: auto;
+                }
+                & a {
+                    color: $color-primary;
+                    transition: color 0.3s;
+                    &:hover {
+                        color: $color-primary-light;
+                    }
+                }
+            }
+        }
+    }
+}

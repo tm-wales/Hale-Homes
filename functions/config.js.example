@@ -1,0 +1,16 @@
+const config = {
+    email: {
+        service: 'Outlook365',
+        auth: {
+            user: '',
+            pass: ''
+        }
+    },
+    other: {
+        deliverEmail: '',
+        // info@hale.homes
+        mcApi: ''
+    }
+}
+
+export default config

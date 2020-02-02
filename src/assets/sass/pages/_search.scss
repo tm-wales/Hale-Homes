@@ -1,0 +1,11 @@
+.page--search {
+    &__header {
+        padding: 15rem 3rem 0 3rem;
+        font-size: 5rem;
+        font-weight: 700;
+        @include respond('ipadPro') {
+            padding: 15rem 15rem 0 15rem;
+        }
+        height: 35vh;
+    }
+}
